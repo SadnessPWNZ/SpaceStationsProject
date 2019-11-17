@@ -8,6 +8,7 @@ from norad_id import NORAD
 class MyForm(Ui_Form, QMainWindow):
     def __init__(self):
         super().__init__()
+
         self.setupUi(self)
         self.update_cords()
 
