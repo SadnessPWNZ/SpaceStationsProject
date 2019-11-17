@@ -5,7 +5,6 @@ from norad_id import NORAD
 import src.api_request as rq
 
 
-
 class MyForm(Ui_Form, QMainWindow):
     def __init__(self):
         super().__init__()
