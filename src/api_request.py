@@ -39,8 +39,8 @@ def open_browser_map(latitude: float, longitude: float) -> None:
     webbrowser.open(url)
 
 
-def visual_passes(api_key: str, norad_id: int, obs_lat: float, obs_lng: float, obs_alt: float, days: int,
-                  min_visibility: int) -> list:
+def visual_passes(norad_id: int, obs_lat: float, obs_lng: float, obs_alt: float, days: int,
+                  min_visibility: int, api_key=API_KEY,) -> list:
     '''
     Get predicted visual passes for any satellite relative to a location on Earth
 
@@ -86,5 +86,5 @@ def visual_passes(api_key: str, norad_id: int, obs_lat: float, obs_lng: float, o
 
 
 if __name__ == '__main__':
-    object = visual_passes(API_KEY, 25544, 37.953757, 58.336792, 129, 10, 300)
+    object = visual_passes(25544, 37.953757, 58.336792, 129, 10, 300)
     print(object[0])

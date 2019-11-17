@@ -44,4 +44,4 @@ class Pass:
             f'End Azimuth on Compass:{self.endAzCompass}\n' \
             f'End Time:{self.endTime}\n' \
             f'Max visual magnitude:{self.mag}\n' \
-            f'Total visible duration of this pass:{self.duration}\n'
+            f'Total visible duration of this pass:{self.duration} seconds\n'
