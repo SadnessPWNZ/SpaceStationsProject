@@ -1,12 +1,13 @@
-import requests
 import json
 import webbrowser
-from src.Classes import Pass
+import requests
+
+from SpaceStationProject.src.Classes import Pass
 
 API_KEY = 'QRGLJV-JCPRUX-7ZLNAR-48LW'
 
 
-def coordinates(norad_id: int) -> tuple:
+def coordinates(norad_id: int, obs_lat: float, obs_lng: float, obs_alt: float, api_key=API_KEY) -> tuple:
     '''
     :param norad_id: norad id of Station
     :return: latitude, longitude: tuple of station coordinates
@@ -15,14 +16,18 @@ def coordinates(norad_id: int) -> tuple:
     print(f'NORAD id: {norad_id}')
 
     # Gets the JSON, 25544 - the ISS(МКС) coordinates
-    request = requests.get(f'https://api.wheretheiss.at/v1/satellites/{norad_id}')
+    # https://www.n2yo.com/rest/v1/satellite/positions/25544/41.702/-76.014/0/2/&apiKey=589P8Q-SDRYX8-L842ZD-5Z9
+    request = requests.get(
+        f' https://www.n2yo.com/rest/v1/satellite/positions/{norad_id}/{obs_lat}/{obs_lng}/{obs_alt}/{2}&apiKey={api_key}'
+    )
 
     # Converting request to the default python dict
     request = json.loads(request.text)
 
     # Get geopositioning for ISS coordinates
     # Latitude and Longitude here
-    latitude, longitude = request['latitude'], request['longitude']
+    dictt = request['positions'][1]
+    latitude, longitude = dictt['satlatitude'], dictt['satlongitude']
 
     return latitude, longitude
 
@@ -40,7 +45,7 @@ def open_browser_map(latitude: float, longitude: float) -> None:
 
 
 def visual_passes(norad_id: int, obs_lat: float, obs_lng: float, obs_alt: float, days: int,
-                  min_visibility: int, api_key=API_KEY,) -> list:
+                  min_visibility: int, api_key=API_KEY, ) -> list:
     '''
     Get predicted visual passes for any satellite relative to a location on Earth
 
@@ -65,26 +70,29 @@ def visual_passes(norad_id: int, obs_lat: float, obs_lng: float, obs_alt: float,
     request = json.loads(request.text)
 
     # Assign pass count to passes
-    passes = request['info']['passescount']
-    # List of returns objects
-    passes_list = list()
+    try:
+        passes = request['info']['passescount']
+        # List of returns objects
+        passes_list = list()
 
-    # Checking passes more than 0
-    if passes > 0:
-        # If there is more than 0 passes
+        # Checking passes more than 0
+        if passes > 0:
+            # If there is more than 0 passes
 
-        passes = request['passes']
-        for i in passes:
-            # print(i)
-            passing = Pass(i['startAz'], i['startAzCompass'], i['startUTC'], i['maxAz'], i['maxAzCompass'],
-                           i['maxUTC'], i['endAz'], i['endAzCompass'], i['endUTC'], i['mag'], i['duration'])
-            passes_list.append(passing)
-    else:
+            passes = request['passes']
+            for i in passes:
+                # print(i)
+                passing = Pass(i['startAz'], i['startAzCompass'], i['startUTC'], i['maxAz'], i['maxAzCompass'],
+                               i['maxUTC'], i['endAz'], i['endAzCompass'], i['endUTC'], i['mag'], i['duration'])
+                passes_list.append(passing)
+        else:
+            passes_list.append(None)
+
+        return passes_list
+    except KeyError:
         passes_list.append(None)
-
-    return passes_list
+        return passes_list
 
 
 if __name__ == '__main__':
-    object = visual_passes(25544, 37.953757, 58.336792, 129, 10, 300)
-    print(object[0])
+    print()
