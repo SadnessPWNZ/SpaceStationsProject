@@ -10,6 +10,18 @@
     <height>529</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>903</width>
+    <height>529</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>903</width>
+    <height>529</height>
+   </size>
+  </property>
   <property name="font">
    <font>
     <weight>50</weight>
@@ -22,6 +34,9 @@
   </property>
   <property name="mouseTracking">
    <bool>false</bool>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::DefaultContextMenu</enum>
   </property>
   <property name="windowTitle">
    <string>DEBUG_BUILD</string>
@@ -145,8 +160,8 @@
   <widget class="QPushButton" name="VisualPassesButton">
    <property name="geometry">
     <rect>
-     <x>620</x>
-     <y>90</y>
+     <x>320</x>
+     <y>210</y>
      <width>171</width>
      <height>23</height>
     </rect>
@@ -161,8 +176,8 @@
   <widget class="QListWidget" name="VisaulPasseslistWidget">
    <property name="geometry">
     <rect>
-     <x>616</x>
-     <y>130</y>
+     <x>316</x>
+     <y>260</y>
      <width>256</width>
      <height>192</height>
     </rect>
@@ -196,17 +211,12 @@
    <property name="editable">
     <bool>false</bool>
    </property>
-   <item>
-    <property name="text">
-     <string>Russia</string>
-    </property>
-   </item>
   </widget>
   <widget class="QSpinBox" name="durationSpinBox">
    <property name="geometry">
     <rect>
-     <x>810</x>
-     <y>90</y>
+     <x>510</x>
+     <y>210</y>
      <width>71</width>
      <height>22</height>
     </rect>
@@ -215,7 +225,10 @@
     <number>1</number>
    </property>
    <property name="maximum">
-    <number>11</number>
+    <number>10</number>
+   </property>
+   <property name="stepType">
+    <enum>QAbstractSpinBox::DefaultStepType</enum>
    </property>
    <property name="value">
     <number>1</number>
@@ -224,8 +237,8 @@
   <widget class="QLabel" name="durationLabel">
    <property name="geometry">
     <rect>
-     <x>810</x>
-     <y>60</y>
+     <x>510</x>
+     <y>180</y>
      <width>91</width>
      <height>16</height>
     </rect>
@@ -279,8 +292,8 @@
   <widget class="QLabel" name="VisualPassesTotal">
    <property name="geometry">
     <rect>
-     <x>620</x>
-     <y>340</y>
+     <x>320</x>
+     <y>470</y>
      <width>211</width>
      <height>16</height>
     </rect>

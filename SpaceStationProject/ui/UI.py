@@ -33,7 +33,7 @@ class MyForm(Ui_Form, QMainWindow):
         self.VisualPassesButton.clicked.connect(self.passes)
         self.informationUpdateButton.clicked.connect(self.satellite_info)
 
-        # Attaching func operator box changing event
+        # Attaching func to box changing event
         self.OperatorComboBox.currentTextChanged.connect(self.update_satellites)
 
         # Updating coordinates on startup
@@ -69,6 +69,7 @@ class MyForm(Ui_Form, QMainWindow):
             # Else text'll be green
             # Also there is update of Total Passes label
             self.VisaulPasseslistWidget.setStyleSheet("color: rgb(0, 170, 0);")
+            self.VisualPassesTotal.setStyleSheet("color: rgb(0, 170, 0);")
             self.VisualPassesTotal.setText(f'Total Passes: {len(passes_list)}')
 
     def open_map(self) -> None:
