@@ -46,6 +46,7 @@ def open_browser_map(latitude: float, longitude: float) -> None:
 
 def visual_passes(norad_id: int, obs_lat: float, obs_lng: float, obs_alt: float, days: int,
                   min_visibility: int, api_key=API_KEY, ) -> list:
+    passes_list = list()
     '''
     Get predicted visual passes for any satellite relative to a location on Earth
 
@@ -73,7 +74,6 @@ def visual_passes(norad_id: int, obs_lat: float, obs_lng: float, obs_alt: float,
     try:
         passes = request['info']['passescount']
         # List of returns objects
-        passes_list = list()
 
         # Checking passes more than 0
         if passes > 0:
@@ -89,7 +89,9 @@ def visual_passes(norad_id: int, obs_lat: float, obs_lng: float, obs_alt: float,
             passes_list.append(None)
 
         return passes_list
-    except KeyError:
+
+    except KeyError as exception:
+        print('API_REQUEST ERROR :{}'.format(exception))
         passes_list.append(None)
         return passes_list
 
