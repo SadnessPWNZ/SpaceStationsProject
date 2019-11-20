@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\princ\Desktop\DEV\SchoolProject\SpaceStationProject\ui\untitled.ui'
+# Form implementation generated from reading ui file 'C:\Users\princ\Desktop\DEV\SpaceStationsProject\SpaceStationProject\ui\untitled.ui'
 #
 # Created by: PyQt5 UI code generator 5.13.0
 #
@@ -52,13 +52,13 @@ class Ui_Form(object):
         self.StationChooserLabel = QtWidgets.QLabel(Form)
         self.StationChooserLabel.setGeometry(QtCore.QRect(406, 20, 91, 21))
         self.StationChooserLabel.setObjectName("StationChooserLabel")
-        self.VisualPasses = QtWidgets.QPushButton(Form)
-        self.VisualPasses.setGeometry(QtCore.QRect(620, 90, 171, 23))
-        self.VisualPasses.setObjectName("VisualPasses")
-        self.listWidget = QtWidgets.QListWidget(Form)
-        self.listWidget.setGeometry(QtCore.QRect(616, 130, 256, 192))
-        self.listWidget.setStyleSheet("color: rgb(255, 0, 0);")
-        self.listWidget.setObjectName("listWidget")
+        self.VisualPassesButton = QtWidgets.QPushButton(Form)
+        self.VisualPassesButton.setGeometry(QtCore.QRect(620, 90, 171, 23))
+        self.VisualPassesButton.setObjectName("VisualPassesButton")
+        self.VisaulPasseslistWidget = QtWidgets.QListWidget(Form)
+        self.VisaulPasseslistWidget.setGeometry(QtCore.QRect(616, 130, 256, 192))
+        self.VisaulPasseslistWidget.setStyleSheet("color: rgb(255, 0, 0);")
+        self.VisaulPasseslistWidget.setObjectName("VisaulPasseslistWidget")
         self.OperatorChooserLabel = QtWidgets.QLabel(Form)
         self.OperatorChooserLabel.setGeometry(QtCore.QRect(10, 20, 91, 21))
         self.OperatorChooserLabel.setObjectName("OperatorChooserLabel")
@@ -86,6 +86,9 @@ class Ui_Form(object):
         self.informationUpdateButton = QtWidgets.QPushButton(Form)
         self.informationUpdateButton.setGeometry(QtCore.QRect(10, 210, 171, 23))
         self.informationUpdateButton.setObjectName("informationUpdateButton")
+        self.VisualPassesTotal = QtWidgets.QLabel(Form)
+        self.VisualPassesTotal.setGeometry(QtCore.QRect(620, 340, 211, 16))
+        self.VisualPassesTotal.setObjectName("VisualPassesTotal")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -93,8 +96,7 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "DEBUG_BUILD"))
-        self.UpdateCoordinatesButton.setWhatsThis(
-            _translate("Form", "<html><head/><body><p>Update station coordinates</p><p><br/></p></body></html>"))
+        self.UpdateCoordinatesButton.setWhatsThis(_translate("Form", "<html><head/><body><p>Update station coordinates</p><p><br/></p></body></html>"))
         self.UpdateCoordinatesButton.setText(_translate("Form", "Update coordinates"))
         self.OpenInGooglMaps.setWhatsThis(_translate("Form", "<html><head/><body><p>Open current map location of station</p><p><br/></p></body></html>"))
         self.OpenInGooglMaps.setText(_translate("Form", "Open Map on browser"))
@@ -102,12 +104,12 @@ class Ui_Form(object):
         self.latitudeLabel.setText(_translate("Form", "None"))
         self.longitudeLabel.setText(_translate("Form", "None"))
         self.StationChooserLabel.setText(_translate("Form", "Choose Satellite"))
-        self.VisualPasses.setWhatsThis(_translate("Form", "<html><head/><body><p>Open current map location of station</p><p><br/></p></body></html>"))
-        self.VisualPasses.setText(_translate("Form", "Visual Passes"))
+        self.VisualPassesButton.setWhatsThis(_translate("Form", "<html><head/><body><p>Open current map location of station</p><p><br/></p></body></html>"))
+        self.VisualPassesButton.setText(_translate("Form", "Visual Passes"))
         self.OperatorChooserLabel.setText(_translate("Form", "Choose Operator"))
         self.OperatorComboBox.setItemText(0, _translate("Form", "Russia"))
         self.durationLabel.setText(_translate("Form", "Days(10 max)"))
         self.informationLabel.setText(_translate("Form", "Satellite information"))
-        self.informationUpdateButton.setWhatsThis(_translate("Form",
-                                                             "<html><head/><body><p>Open current map location of station</p><p><br/></p></body></html>"))
+        self.informationUpdateButton.setWhatsThis(_translate("Form", "<html><head/><body><p>Open current map location of station</p><p><br/></p></body></html>"))
         self.informationUpdateButton.setText(_translate("Form", "Update satellite info"))
+        self.VisualPassesTotal.setText(_translate("Form", "Total Passes:"))

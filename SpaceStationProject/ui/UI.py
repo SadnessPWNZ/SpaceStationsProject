@@ -30,11 +30,14 @@ class MyForm(Ui_Form, QMainWindow):
         # Attaching funcs to buttons
         self.UpdateCoordinatesButton.clicked.connect(self.update_cords)
         self.OpenInGooglMaps.clicked.connect(self.open_map)
-        self.VisualPasses.clicked.connect(self.passes)
+        self.VisualPassesButton.clicked.connect(self.passes)
         self.informationUpdateButton.clicked.connect(self.satellite_info)
 
         # Attaching func operator box changing event
         self.OperatorComboBox.currentTextChanged.connect(self.update_satellites)
+
+        # Updating coordinates on startup
+        self.update_cords()
 
     def update_cords(self) -> None:
         station = self.StationComboBox.currentText()
@@ -50,22 +53,26 @@ class MyForm(Ui_Form, QMainWindow):
     def passes(self) -> None:
         station = self.StationComboBox.currentText()
         # Clear list from old data
-        self.listWidget.clear()
+        self.VisaulPasseslistWidget.clear()
 
         passes_list = rq.visual_passes(NORAD[station], 37.953757, 58.336792, 129, int(self.durationSpinBox.text()), 300)
 
         for i in range(len(passes_list)):
-            self.listWidget.insertItem(i + 1, str(passes_list[i]))
+            self.VisaulPasseslistWidget.insertItem(i + 1, str(passes_list[i]))
 
         if passes_list[0] is None:
             # If None,than make text red
-            self.listWidget.setStyleSheet("color: rgb(255, 0, 0);")
+            self.VisaulPasseslistWidget.setStyleSheet("color: rgb(255, 0, 0);")
+            self.VisualPassesTotal.setText(f'Either no any passes or External error')
+            self.VisualPassesTotal.setStyleSheet("color: rgb(255, 0, 0);")
         else:
             # Else text'll be green
-            self.listWidget.setStyleSheet("color: rgb(0, 170, 0);")
+            # Also there is update of Total Passes label
+            self.VisaulPasseslistWidget.setStyleSheet("color: rgb(0, 170, 0);")
+            self.VisualPassesTotal.setText(f'Total Passes: {len(passes_list)}')
 
     def open_map(self) -> None:
-        rq.open_browser_map(self.latitude_label.text(), self.longitude_label.text())
+        rq.open_browser_map(self.latitudeLabel.text(), self.longitudeLabel.text())
 
     def update_satellites(self) -> None:
         station_list = db.get_stations(str(self.OperatorComboBox.currentText()))
