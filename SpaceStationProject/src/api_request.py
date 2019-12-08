@@ -46,7 +46,7 @@ def open_browser_map(latitude: float, longitude: float) -> None:
     :return: None
     '''
 
-    url = f'https://www.google.com/maps/@{latitude},{longitude},4.75z'
+    url = f'https://www.google.com/maps/@{latitude},{longitude},18.75z'
     webbrowser.open(url)
 
 
@@ -69,11 +69,11 @@ def visual_passes(norad_id: int, obs_lat: float, obs_lng: float, obs_alt: float,
     '''
     passes_list = list()
 
-
-    url = f'http://www.n2yo.com/rest/v1/satellite/radiopasses/{norad_id}/{obs_lat}/{obs_lng}/{obs_alt}/{days}/{min_visibility}/&apiKey={api_key}'
+    url = f'http://www.n2yo.com/rest/v1/satellite/visualpasses/{norad_id}/{obs_lat}/{obs_lng}/{obs_alt}/{days}/{min_visibility}/&apiKey={api_key}'
     # Get the JSON by request
     request = requests.get(url)
     request = json.loads(request.text)
+    print(request, '\n', obs_lat, obs_lng, obs_alt)
 
     # Assign pass count to passes
     try:

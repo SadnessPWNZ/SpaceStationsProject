@@ -6,7 +6,7 @@ Project code classes here
 from datetime import datetime
 
 
-class Pass:
+class Pass(object):
 
     def __init__(self, startAz: float, startAzCompass: str, startTime: float, maxAz: float, maxAzCompass: str,
                  maxTime: float, endAz: float, endAzCompass: str, endTime: float, mag: float, duration: int):
