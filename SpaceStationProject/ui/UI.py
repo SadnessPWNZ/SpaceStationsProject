@@ -7,8 +7,11 @@ from SpaceStationProject.src import database_backend as db
 
 from SpaceStationProject.ui.untitled import Ui_Form
 
+from SpaceStationProject.cfg import coordinates
+
 NORAD = db.get_stations_and_norad()
 
+LATITUDE, LONGITUDE, ALTITUDE, = coordinates['LAT'], coordinates['LNG'], coordinates['ALT']
 
 class MyForm(Ui_Form, QMainWindow):
     def __init__(self):
@@ -42,7 +45,7 @@ class MyForm(Ui_Form, QMainWindow):
     def update_cords(self) -> None:
         station = self.StationComboBox.currentText()
 
-        latitude, longitude = rq.coordinates(NORAD[station], 37.953757, 58.336792, 129)
+        latitude, longitude = rq.coordinates(NORAD[station], LATITUDE, LONGITUDE, ALTITUDE)
 
         print(f'Широта: {str(latitude)}\nДолгота: {str(longitude)}')
         print('---------------------------------------------------')
@@ -55,7 +58,7 @@ class MyForm(Ui_Form, QMainWindow):
         # Clear list from old data
         self.VisaulPasseslistWidget.clear()
 
-        passes_list = rq.visual_passes(NORAD[station], 37.953757, 58.336792, 129, int(self.durationSpinBox.text()), 300)
+        passes_list = rq.visual_passes(NORAD[station], LATITUDE, LONGITUDE, ALTITUDE, int(self.durationSpinBox.text()), 30)
 
         for i in range(len(passes_list)):
             self.VisaulPasseslistWidget.insertItem(i + 1, str(passes_list[i]))
