@@ -13,6 +13,7 @@ NORAD = db.get_stations_and_norad()
 
 LATITUDE, LONGITUDE, ALTITUDE, = coordinates['LAT'], coordinates['LNG'], coordinates['ALT']
 
+
 class MyForm(Ui_Form, QMainWindow):
     def __init__(self):
         super().__init__()
@@ -58,7 +59,8 @@ class MyForm(Ui_Form, QMainWindow):
         # Clear list from old data
         self.VisaulPasseslistWidget.clear()
 
-        passes_list = rq.visual_passes(NORAD[station], LATITUDE, LONGITUDE, ALTITUDE, int(self.durationSpinBox.text()), 30)
+        passes_list = rq.visual_passes(NORAD[station], LATITUDE, LONGITUDE, ALTITUDE, int(self.durationSpinBox.text()),
+                                       10)
 
         for i in range(len(passes_list)):
             self.VisaulPasseslistWidget.insertItem(i + 1, str(passes_list[i]))
