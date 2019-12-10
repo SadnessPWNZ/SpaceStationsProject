@@ -95,7 +95,3 @@ class MyForm(Ui_Form, QMainWindow):
         self.informationText.setText(str(info.info()))
 
 
-app = QApplication(sys.argv)
-ex = MyForm()
-ex.show()
-sys.exit(app.exec_())
