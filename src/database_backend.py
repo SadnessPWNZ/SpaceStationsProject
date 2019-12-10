@@ -1,5 +1,5 @@
 import sqlite3
-from SpaceStationProject.src.Classes import Station
+from src.Classes import Station
 
 DATABASE_PATH = r'C:\Users\princ\Desktop\DEV\SchoolProject\SpaceStationProject\src\sample3.sqlite'
 

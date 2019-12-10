@@ -2,12 +2,12 @@ import sys
 
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
-import SpaceStationProject.src.api_request as rq
-from SpaceStationProject.src import database_backend as db
+import src.api_request as rq
+from src import database_backend as db
 
-from SpaceStationProject.ui.untitled import Ui_Form
+from ui.untitled import Ui_Form
 
-from SpaceStationProject.cfg import coordinates
+from cfg import coordinates
 
 NORAD = db.get_stations_and_norad()
 

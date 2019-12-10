@@ -2,7 +2,7 @@ import json
 import webbrowser
 import requests
 
-from SpaceStationProject.src.Classes import Pass
+from src.Classes import Pass
 
 API_KEY = 'QRGLJV-JCPRUX-7ZLNAR-48LW'
 
