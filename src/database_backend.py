@@ -1,7 +1,7 @@
 import sqlite3
 from src.Classes import Station
-
-DATABASE_PATH = r'C:\Users\princ\Desktop\DEV\SchoolProject\SpaceStationProject\src\sample3.sqlite'
+import os
+DATABASE_PATH = rf'{os.getcwd()}\src\sample3.sqlite'
 
 con = sqlite3.connect(DATABASE_PATH)
 cursor = con.cursor()

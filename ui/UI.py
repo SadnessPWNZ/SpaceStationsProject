@@ -41,7 +41,6 @@ class MyForm(Ui_Form, QMainWindow):
         self.OperatorComboBox.currentTextChanged.connect(self.update_satellites)
 
         # Updating coordinates on startup
-        self.update_cords()
 
     def update_cords(self) -> None:
         station = self.StationComboBox.currentText()
@@ -93,5 +92,3 @@ class MyForm(Ui_Form, QMainWindow):
         # Get and set new data
         info = db.get_station(self.StationComboBox.currentText())
         self.informationText.setText(str(info.info()))
-
-
